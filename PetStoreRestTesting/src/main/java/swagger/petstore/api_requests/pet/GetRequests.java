@@ -12,21 +12,24 @@ public class GetRequests {
 
     public static Response getPetsByStatus(String status) {
         return RestAssured.given()
-                .basePath(BASE_URL)
-                .baseUri(GET_PETS_BY_STATUS)
+                .baseUri(BASE_URL)
+                .basePath(GET_PETS_BY_STATUS)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
                 .queryParam(petStatus, status)
                 .log().all()
                 .when()
                 .get()
-                .thenReturn();
+                .then()
+                .log().all()
+                .extract()
+                .response();
     }
 
     public static Response getPetById(int id) {
         return RestAssured.given()
-                .basePath(BASE_URL)
-                .baseUri(GET_PETS_BY_ID + id)
+                .baseUri(BASE_URL)
+                .basePath(GET_PETS_BY_STATUS + id)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
                 .log().all()
