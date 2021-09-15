@@ -10,7 +10,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Pet {
     @JsonProperty
-    private int id;
+    private long id;
     @JsonProperty
     private Category category;
     @JsonProperty

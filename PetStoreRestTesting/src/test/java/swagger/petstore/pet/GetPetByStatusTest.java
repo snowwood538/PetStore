@@ -1,13 +1,12 @@
 package swagger.petstore.pet;
 
+
 import io.restassured.response.Response;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import swagger.petstore.api_requests.pet.GetRequests;
 import swagger.petstore.data_providers.PetDataProvider;
 import swagger.petstore.models.Pet;
-import swagger.petstore.models.PetList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +32,7 @@ public class GetPetByStatusTest {
     @Test(dataProvider = "Statuses to compare", dataProviderClass = PetDataProvider.class)
     public void responseBodyHasStatusAccordingRequest(String[] status) {
         Response response = GetRequests.getPetsByStatus(status);
-        List<Pet> actualStatus = response.as(PetList.class).getListWithPets();
+        List<Pet> actualStatus = response.jsonPath().getList("",Pet.class);
         for (Pet pet : actualStatus) {
             Assert.assertEquals(pet.getStatus(), status[0]);
         }
