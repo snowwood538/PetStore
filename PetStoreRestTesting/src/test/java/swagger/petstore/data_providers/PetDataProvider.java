@@ -7,26 +7,26 @@ public class PetDataProvider {
     @DataProvider(name = "Statuses to compare")
     public static Object[][] dataToCompare() {
         return new Object[][] {
-                {"available"},
-                {"pending"},
-                {"sold"}};
+//                {new String[] {"available"}},
+//                {new String[] {"pending"}},
+                {new String[] {"sold"}}};
     }
 
     @DataProvider(name = "Incorrect pet statuses")
     public static Object[][] incorrectStatusData() {
         return new Object[][] {
-                {"not available", 400},
-                {"200",400},
-                {"//////",400},
-                {"so_ld", 400},
-                {"avai lable", 400}};
+                {new String[] {"not available"}, 400},
+                {new String[] {"200"},400},
+                {new String[] {"//////"},400},
+                {new String[] {"so_ld"}, 400},
+                {new String[] {"avai lable"}, 400}};
     }
 
     @DataProvider(name = "Correct pet statuses")
     public static Object[][] positiveStatusData() {
         return new Object[][] {
-                {"available", 200},
-                {"pending",200},
-                {"sold",200}};
+                {new String[] {"available"}, 200},
+                {new String[] {"pending"},200},
+                {new String[] {"sold"},200}};
     }
 }
