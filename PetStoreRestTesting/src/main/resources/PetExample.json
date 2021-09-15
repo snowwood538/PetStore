@@ -1,18 +1,20 @@
-{
-  "id": 20,
-  "category": {
-    "id": 0,
-    "name": "string"
-  },
-  "name": "doggie",
-  "photoUrls": [
-    "string"
-  ],
-  "tags": [
-    {
+[
+  {
+    "id": 9223372000001088184,
+    "category": {
       "id": 0,
       "name": "string"
-    }
-  ],
-  "status": "available"
-}
+    },
+    "name": "doggie",
+    "photoUrls": [
+      "string"
+    ],
+    "tags": [
+      {
+        "id": 0,
+        "name": "string"
+      }
+    ],
+    "status": "available"
+  }
+]

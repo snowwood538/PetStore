@@ -9,7 +9,6 @@ import java.io.IOException;
 public class ResponseFileWriter {
 
     private ResponseFileWriter() {
-
     }
 
     public static void writeResponse(Response response) {

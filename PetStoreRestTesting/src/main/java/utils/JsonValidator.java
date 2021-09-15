@@ -11,6 +11,7 @@ import java.io.*;
 public class JsonValidator {
     private static final String PATH_TO_TEMPLATE = "src/main/resources/Pet.json";
     private static final String PATH_TO_EXAMPLE = "src/main/resources/PetExample.json";
+    private static final String PATH_TO_RESPONSE_FILE = "src/main/resources/Response.json";
 
     private JsonValidator() {
 
@@ -21,11 +22,9 @@ public class JsonValidator {
         JSONObject jsonSchema = new JSONObject(
                 new JSONTokener(new FileInputStream(PATH_TO_TEMPLATE)));
         JSONObject jsonSubject = new JSONObject(
-                new JSONTokener(new FileInputStream(String.valueOf(new File("src/main/resources/Response.json")))));
+                new JSONTokener(new FileInputStream(PATH_TO_RESPONSE_FILE)));
 
         Schema schema = SchemaLoader.load(jsonSchema);
         schema.validate(jsonSubject);
     }
-
-
 }

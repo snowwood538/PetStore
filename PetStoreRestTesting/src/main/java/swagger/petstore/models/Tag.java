@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Tags {
+public class Tag {
     private int id;
     private String name;
 }

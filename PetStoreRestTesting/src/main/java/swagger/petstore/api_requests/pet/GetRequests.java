@@ -14,13 +14,13 @@ public class GetRequests {
 
     }
 
-    public static Response getPetsByStatus(String status) {
+    public static Response getPetsByStatus(String[] status) {
         return RestAssured.given()
                 .baseUri(BASE_URL)
                 .basePath(GET_PETS_BY_STATUS)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                .queryParam(petStatus, status)
+                .queryParam(petStatus, status[0])
                 .log().all()
                 .when()
                 .get()
