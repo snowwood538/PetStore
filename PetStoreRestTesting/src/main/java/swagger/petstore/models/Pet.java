@@ -21,6 +21,4 @@ public class Pet {
     private List<Tag> tags;
     @JsonProperty
     private String status;
-
-
 }
