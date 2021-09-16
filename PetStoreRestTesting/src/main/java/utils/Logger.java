@@ -1,44 +1,44 @@
 package utils;
 
-
-
 import org.apache.logging.log4j.LogManager;
 
 import java.io.File;
 
 public class Logger {
 
-    public static org.apache.logging.log4j.Logger logger = LogManager.getLogger(Logger.class);
+    public Logger() {}
+
+    public static org.apache.logging.log4j.Logger log = LogManager.getLogger(Logger.class);
 
     public static void error(String message) {
-        logger.error(message);
+        log.error(message);
     }
 
     public static void error(String message, Throwable throwable) {
-        logger.error(message, throwable);
+        log.error(message, throwable);
     }
 
     public static void info(String message) {
-        logger.info(message);
+        log.info(message);
     }
 
     public static void debug(String message) {
-        logger.debug(message);
+        log.debug(message);
     }
 
     public static void warn(String message) {
-        logger.warn(message);
+        log.warn(message);
     }
 
     public static void trace(String message) {
-        logger.trace(message);
+        log.trace(message);
     }
 
     public static void log(String message){
-        logger.info(message);
+        log.info(message);
     }
 
     public static void attach(File filePath, String message) {
-        logger.info("RP_MESSAGE#FILE#{}#{}", filePath, message);
+        log.info("RP_MESSAGE#FILE#{}#{}", filePath, message);
     }
 }

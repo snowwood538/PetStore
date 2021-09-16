@@ -7,8 +7,8 @@ public class PetDataProvider {
     @DataProvider(name = "Statuses to compare")
     public static Object[][] dataToCompare() {
         return new Object[][] {
-//                {new String[] {"available"}},
-//                {new String[] {"pending"}},
+                {new String[] {"available"}},
+                {new String[] {"pending"}},
                 {new String[] {"sold"}}};
     }
 

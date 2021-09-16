@@ -3,6 +3,7 @@ package swagger.petstore.api_requests.pet;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 
 import static swagger.petstore.api_instances.BaseUrls.BASE_URL;
 import static swagger.petstore.api_instances.endpoints.PetEndpoints.*;
@@ -25,9 +26,9 @@ public class GetRequests {
                 .when()
                 .get()
                 .then()
-                .log().all()
-                .extract()
-                .response();
+                .log().status()
+                .log().body()
+                .extract().response();
     }
 
     public static Response getPetById(int id) {
@@ -40,7 +41,7 @@ public class GetRequests {
                 .when()
                 .get()
                 .then()
-                .log().body()
+                .log().all()
                 .extract().response();
     }
 }

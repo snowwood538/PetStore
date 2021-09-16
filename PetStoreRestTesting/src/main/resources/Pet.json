@@ -14,11 +14,7 @@
         "name": {
           "type": "string"
         }
-      },
-      "required": [
-        "id",
-        "name"
-      ]
+      }
     },
     "name": {
       "type": "string"
@@ -43,11 +39,7 @@
             "name": {
               "type": "string"
             }
-          },
-          "required": [
-            "id",
-            "name"
-          ]
+          }
         }
       ]
     },
