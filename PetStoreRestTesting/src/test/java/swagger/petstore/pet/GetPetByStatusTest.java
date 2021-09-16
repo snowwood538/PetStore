@@ -11,7 +11,6 @@ import swagger.petstore.api_requests.pet.GetRequests;
 import swagger.petstore.data_providers.PetDataProvider;
 import swagger.petstore.models.Pet;
 import utils.JsonValidator;
-import utils.Logger;
 
 import java.io.FileNotFoundException;
 import java.util.List;

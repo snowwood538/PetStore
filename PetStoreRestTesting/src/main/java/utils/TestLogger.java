@@ -4,41 +4,41 @@ import org.apache.logging.log4j.LogManager;
 
 import java.io.File;
 
-public class Logger {
+public class TestLogger {
 
-    public Logger() {}
+    public TestLogger() {}
 
-    public static org.apache.logging.log4j.Logger log = LogManager.getLogger(Logger.class);
+    public static org.apache.logging.log4j.Logger logger = LogManager.getLogger(TestLogger.class);
 
     public static void error(String message) {
-        log.error(message);
+        logger.error(message);
     }
 
     public static void error(String message, Throwable throwable) {
-        log.error(message, throwable);
+        logger.error(message, throwable);
     }
 
     public static void info(String message) {
-        log.info(message);
+        logger.info(message);
     }
 
     public static void debug(String message) {
-        log.debug(message);
+        logger.debug(message);
     }
 
     public static void warn(String message) {
-        log.warn(message);
+        logger.warn(message);
     }
 
     public static void trace(String message) {
-        log.trace(message);
+        logger.trace(message);
     }
 
     public static void log(String message){
-        log.info(message);
+        logger.info(message);
     }
 
     public static void attach(File filePath, String message) {
-        log.info("RP_MESSAGE#FILE#{}#{}", filePath, message);
+        logger.info("RP_MESSAGE#FILE#{}#{}", filePath, message);
     }
 }
