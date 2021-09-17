@@ -1,14 +1,16 @@
-package utils;
+package utils.logger;
 
-import org.apache.logging.log4j.LogManager;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
-import java.io.File;
+public class Log {
 
-public class TestLogger {
+    private static Logger logger = LogManager.getLogger(Log.class.getName());
 
-    public TestLogger() {}
-
-    public static org.apache.logging.log4j.Logger logger = LogManager.getLogger(TestLogger.class);
+    public static void loggerProperty() {
+        PropertyConfigurator.configure("log4j.properties");
+    }
 
     public static void error(String message) {
         logger.error(message);
@@ -36,9 +38,5 @@ public class TestLogger {
 
     public static void log(String message){
         logger.info(message);
-    }
-
-    public static void attach(File filePath, String message) {
-        logger.info("RP_MESSAGE#FILE#{}#{}", filePath, message);
     }
 }
