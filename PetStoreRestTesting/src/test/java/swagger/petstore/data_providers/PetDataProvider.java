@@ -12,11 +12,31 @@ public class PetDataProvider {
                 {new String[] {"sold"}}};
     }
 
-    @DataProvider(name = "Correct_pet_id")
-    public static Object[][] positiveIdData() {
-        return new Object[][] {
+    @DataProvider(name = "Existing_id_for_pets")
+    public static Object[][] getExistingIdForPets() {
+        return new Object[][]{
+                {1},
                 {10},
                 {100},
                 {1000}};
+    }
+
+    @DataProvider(name = "Not_existing_id_for_pets")
+    public static Object[][] getNotExistingIdForPets() {
+        return new Object[][]{
+                {77},
+                {999},
+                {1000},
+                {56798}};
+    }
+
+    @DataProvider(name = "Incorrect_id_for_pets")
+    public static Object[][] getIncorrectIdForPets() {
+        return new Object[][]{
+                {""},
+                {"asd"},
+                {"999"},
+                {"213ddd"},
+                {"   2 "}};
     }
 }

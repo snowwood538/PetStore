@@ -15,7 +15,8 @@ import static utils.validator.ValidationTemplatePaths.PATH_TO_PET_TEMPLATE;
 public class JsonValidator {
 
     public static void validatePetObject(Response response) {
-        try {String requestResponse = response.asString();
+        try {
+            String requestResponse = response.asString();
             JSONObject jsonSchema = new JSONObject(new JSONTokener(new FileInputStream(PATH_TO_PET_TEMPLATE)));
             JSONObject jsonSubject = new JSONObject(new JSONTokener(requestResponse));
             Schema schema = SchemaLoader.load(jsonSchema);
@@ -23,7 +24,6 @@ public class JsonValidator {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
     }
 
     public static void validatePetList(String requestResponse) {
@@ -35,6 +35,5 @@ public class JsonValidator {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
     }
 }
