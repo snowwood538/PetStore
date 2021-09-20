@@ -21,7 +21,7 @@ import static swagger.petstore.api_instances.queries.PetQueries.petStatus;
 
 public class GetPetByStatusTest {
 
-    @Test(dataProvider = "Correct pet statuses", dataProviderClass = PetDataProvider.class)
+    @Test(dataProvider = "Correct_pet_statuses", dataProviderClass = PetDataProvider.class)
     public void getPetByStatusCorrectStatuses(String[] status) throws FileNotFoundException {
         RequestSpecification spec = Specifications.baseGetRequestSpecification("https://petstore.swagger.io/v2", GET_PETS_BY_STATUS);
         Response response = GetRequests.getPet(spec.queryParam(petStatus, status[0]));
@@ -30,7 +30,7 @@ public class GetPetByStatusTest {
     }
 
     @SneakyThrows
-    @Test(dataProvider = "Correct pet statuses", dataProviderClass = PetDataProvider.class)
+    @Test(dataProvider = "Correct_pet_statuses", dataProviderClass = PetDataProvider.class)
     public void responseBodyHasStatusAccordingRequest(String[] status) {
         RequestSpecification spec = Specifications.baseGetRequestSpecification("https://petstore.swagger.io/v2", GET_PETS_BY_STATUS);
         Response response = GetRequests.getPet(spec.queryParam(petStatus, status[0]));
