@@ -3,17 +3,12 @@ package swagger.petstore.api_requests.pet;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 
 import static swagger.petstore.api_instances.BaseUrls.BASE_URL;
 import static swagger.petstore.api_instances.endpoints.PetEndpoints.*;
 import static swagger.petstore.api_instances.queries.PetQueries.petStatus;
 
 public class GetRequests {
-
-    private GetRequests () {
-
-    }
 
     public static Response getPetsByStatus(String[] status) {
         return RestAssured.given()
