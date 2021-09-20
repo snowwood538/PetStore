@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Pet {
+public class PetModel {
     @JsonProperty
     private long id;
     @JsonProperty
