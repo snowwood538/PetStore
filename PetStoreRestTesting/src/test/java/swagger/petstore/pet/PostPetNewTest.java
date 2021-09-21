@@ -26,7 +26,7 @@ public class PostPetNewTest {
         pet.setPhotoUrls(urls);
 
         RequestSpecification spec = Specifications.baseGetRequestSpecification(BASE_URL, POST_NEW_PET);
-        Response response = Pet.postPet(spec, pet);
+        Response response = Pet.postPet(spec.contentType("multipart+"), pet);
 
         Assert.assertEquals(response.getStatusCode(), 200);
         JsonValidator.validatePetObject(response);
