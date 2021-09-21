@@ -11,7 +11,7 @@ import utils.validator.JsonValidator;
 
 import static swagger.petstore.api_instances.endpoints.PetEndpoints.GET_PETS_BY_ID;
 
-public class GetPetModelByIdTest {
+public class GetPetByIdTest {
 
     @Test
     public static void getPetByIdPositive(int id) {
