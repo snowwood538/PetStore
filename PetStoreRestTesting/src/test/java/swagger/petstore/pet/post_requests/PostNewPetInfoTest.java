@@ -9,7 +9,7 @@ import swagger.petstore.api_requests.Specifications;
 import swagger.petstore.models.PetModel;
 
 import static swagger.petstore.api_instances.BaseUrls.BASE_URL;
-import static swagger.petstore.api_instances.endpoints.PostEndpoints.POST_NEW_PET_INFO;
+import static swagger.petstore.api_instances.endpoints.PetEndpoints.PET_STRICT;
 
 public class PostNewPetInfoTest {
 
@@ -19,7 +19,7 @@ public class PostNewPetInfoTest {
         pet.setName("Andrew");
         pet.setStatus("Available");
 
-        RequestSpecification spec = Specifications.postNewPetInfoSpecification(BASE_URL, POST_NEW_PET_INFO + 10);
+        RequestSpecification spec = Specifications.postNewPetInfoSpecification(BASE_URL, PET_STRICT + 10);
         Response response = Pet.postPet(spec, pet);
 
         Assert.assertEquals(response.getStatusCode(), 200);

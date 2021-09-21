@@ -14,7 +14,7 @@ import utils.validator.JsonValidator;
 import java.util.List;
 
 import static swagger.petstore.api_instances.BaseUrls.BASE_URL;
-import static swagger.petstore.api_instances.endpoints.PostEndpoints.POST_NEW_PET;
+import static swagger.petstore.api_instances.endpoints.PetEndpoints.PET_OPEN;
 
 public class PostNewPetTest {
 
@@ -25,8 +25,8 @@ public class PostNewPetTest {
         List<String> urls = List.of("photoUrl");
         pet.setPhotoUrls(urls);
 
-        RequestSpecification spec = Specifications.baseRequestSpecification(BASE_URL, POST_NEW_PET);
-        Response response = Pet.postPet(spec.contentType("multipart+"), pet);
+        RequestSpecification spec = Specifications.baseRequestSpecification(BASE_URL, PET_OPEN);
+        Response response = Pet.postPet(spec, pet);
 
         Assert.assertEquals(response.getStatusCode(), 200);
         JsonValidator.validatePetObject(response);
@@ -52,7 +52,7 @@ public class PostNewPetTest {
         pet.setStatus("Available");
 
 
-        RequestSpecification spec = Specifications.baseRequestSpecification(BASE_URL, POST_NEW_PET);
+        RequestSpecification spec = Specifications.baseRequestSpecification(BASE_URL, PET_OPEN);
         Response response = Pet.postPet(spec, pet);
 
         Assert.assertEquals(response.getStatusCode(), 200);
