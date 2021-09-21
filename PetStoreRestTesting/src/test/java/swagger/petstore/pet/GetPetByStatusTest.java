@@ -36,7 +36,7 @@ public class GetPetByStatusTest {
         JsonMapper mapper = new JsonMapper();
         List<PetModel> myObjects = mapper.readValue(response.asString(), new TypeReference<>(){});
         for (PetModel pet : myObjects) {
-            Assert.assertEquals(pet.getStatus(), status[0]);
+            Assert.assertEquals(pet.getStatus(), status[0], "The object meets the requirements");
         }
 
     }
