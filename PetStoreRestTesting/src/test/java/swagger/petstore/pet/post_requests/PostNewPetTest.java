@@ -1,4 +1,4 @@
-package swagger.petstore.pet;
+package swagger.petstore.pet.post_requests;
 
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -14,9 +14,9 @@ import utils.validator.JsonValidator;
 import java.util.List;
 
 import static swagger.petstore.api_instances.BaseUrls.BASE_URL;
-import static swagger.petstore.api_instances.endpoints.PetEndpoints.POST_NEW_PET;
+import static swagger.petstore.api_instances.endpoints.PostEndpoints.POST_NEW_PET;
 
-public class PostPetNewTest {
+public class PostNewPetTest {
 
     @Test
     public static void postNewPetWithRequiredFieldsPositive() {
@@ -25,7 +25,7 @@ public class PostPetNewTest {
         List<String> urls = List.of("photoUrl");
         pet.setPhotoUrls(urls);
 
-        RequestSpecification spec = Specifications.baseGetRequestSpecification(BASE_URL, POST_NEW_PET);
+        RequestSpecification spec = Specifications.baseRequestSpecification(BASE_URL, POST_NEW_PET);
         Response response = Pet.postPet(spec.contentType("multipart+"), pet);
 
         Assert.assertEquals(response.getStatusCode(), 200);
@@ -52,7 +52,7 @@ public class PostPetNewTest {
         pet.setStatus("Available");
 
 
-        RequestSpecification spec = Specifications.baseGetRequestSpecification(BASE_URL, POST_NEW_PET);
+        RequestSpecification spec = Specifications.baseRequestSpecification(BASE_URL, POST_NEW_PET);
         Response response = Pet.postPet(spec, pet);
 
         Assert.assertEquals(response.getStatusCode(), 200);
