@@ -18,7 +18,7 @@ import java.util.List;
 import static swagger.petstore.api_instances.endpoints.PetEndpoints.GET_PETS_BY_STATUS;
 import static swagger.petstore.api_instances.queries.PetQueries.petStatus;
 
-public class GetPetByStatusTest {
+public class GetByStatusPositiveTest {
 
     @Test(dataProvider = "Correct_pet_statuses", dataProviderClass = PetDataProvider.class)
     public void getPetByStatusCorrectStatuses(String[] status) {
