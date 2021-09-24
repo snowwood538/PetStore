@@ -18,7 +18,7 @@ import static swagger.petstore.api.instances.endpoints.PetEndpoints.PETS_BY_STAT
 import static swagger.petstore.api.instances.queries.PetQueries.PET_STATUS;
 import static swagger.petstore.api.instances.urls.BaseUrls.BASE_URL;
 
-public class GetByStatusNegativ1eTest {
+public class GetByStatusNegativeTest {
 
     @SneakyThrows
     @Test(dataProvider = "Incorrect_pet_statuses", dataProviderClass = PetDataProvider.class)
