@@ -3,8 +3,8 @@ package utils.factory.pet.types;
 import swagger.petstore.models.Category;
 import swagger.petstore.models.PetModel;
 import swagger.petstore.models.Tag;
-import utils.factory.pet.utils.Generator;
 import utils.factory.pet.factory.IPet;
+import utils.factory.pet.utils.Generator;
 
 import java.util.List;
 import java.util.Random;
