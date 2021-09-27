@@ -20,7 +20,7 @@ public class DeletePositiveTest {
     public static final PetModel pet = PetFactory.createNewPet(FULFILLED_PET);
 
     @BeforeClass
-    public void createNewPetToDelete() {
+    public void beforeDeletePetByIDTests() {
         RequestSpecification spec = Specifications.requestSpecification(BASE_URL, PET);
         PetRequests.post(spec, pet);
     }

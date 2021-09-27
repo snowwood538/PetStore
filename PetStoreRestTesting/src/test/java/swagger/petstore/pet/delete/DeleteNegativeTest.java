@@ -21,7 +21,7 @@ public class DeleteNegativeTest {
     private static final PetModel pet = PetFactory.createNewPet(FULFILLED_PET);
 
     @BeforeClass
-    public void createAndDeletePosition() {
+    public void beforeDeleteNegativeTests() {
         RequestSpecification specToCreate = Specifications.requestSpecification(BASE_URL, PET);
         PetRequests.post(specToCreate, pet);
         RequestSpecification specToDelete = Specifications.requestSpecification(BASE_URL, PET_STRICT + pet.getId());

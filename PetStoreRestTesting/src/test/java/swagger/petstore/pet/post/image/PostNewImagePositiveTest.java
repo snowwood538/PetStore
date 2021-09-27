@@ -25,7 +25,7 @@ public class PostNewImagePositiveTest {
     public static final PetModel pet = PetFactory.createNewPet(FULFILLED_PET);
 
     @BeforeClass
-    public void createNewPetToDelete() {
+    public void beforeClassPostNewImageTests() {
         RequestSpecification spec = Specifications.requestSpecification(BASE_URL, PET);
         PetRequests.post(spec, pet);
     }

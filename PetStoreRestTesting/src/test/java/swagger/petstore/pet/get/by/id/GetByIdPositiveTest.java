@@ -21,7 +21,7 @@ public class GetByIdPositiveTest {
     public static final PetModel pet = PetFactory.createNewPet(FULFILLED_PET);
 
     @BeforeClass
-    public void createNewPetToGet() {
+    public void beforeGetPetById() {
         RequestSpecification spec = Specifications.requestSpecification(BASE_URL, PET);
         PetRequests.post(spec, pet);
     }
