@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Wiremock Test">
+    <test name="Get requests testing">
+        <groups>
+            <run>
+                <include name="Wiremock Test Group"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="swagger.petstore.hooks.SuiteHooks"/>
+            <class name="swagger.petstore.pet.get.by.id.mock.GetByIdPositiveTest"/>
+            <class name="swagger.petstore.pet.get.by.id.mock.GetPetByNotExistingIdNegativeTest"/>
+            <class name="swagger.petstore.pet.get.by.id.mock.GetByNotValidIDNegativeTest"/>
+            <class name="swagger.petstore.pet.post.mock.pet.PostNewPetWithAllFieldsPositiveTest"/>
+            <class name="swagger.petstore.pet.post.mock.pet.PostNewPetWithRequiredFieldsPositiveTest"/>
+        </classes>
+    </test>
+</suite>

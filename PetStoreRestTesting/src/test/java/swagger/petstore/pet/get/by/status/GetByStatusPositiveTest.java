@@ -9,7 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import swagger.petstore.api.requests.PetRequests;
 import swagger.petstore.api.requests.Specifications;
-import swagger.petstore.data_providers.pet.PetDataProvider;
+import swagger.petstore.data_providers.PetDataProvider;
 import swagger.petstore.models.PetModel;
 import utils.validator.JsonValidator;
 

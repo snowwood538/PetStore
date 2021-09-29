@@ -1,14 +1,14 @@
 package swagger.petstore.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Data;
 
 @Data
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonPropertyOrder({"id", "name"})
 public class Tag {
-    @JsonProperty
+    @JsonProperty("id")
     private int id;
-    @JsonProperty
+    @JsonProperty("name")
     private String name;
 }

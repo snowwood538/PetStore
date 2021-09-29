@@ -1,4 +1,4 @@
-package swagger.petstore.data_providers.pet;
+package swagger.petstore.data_providers;
 
 import org.testng.annotations.DataProvider;
 
@@ -20,9 +20,7 @@ public class PetDataProvider {
     public static Object[][] getIncorrectIdForPets() {
         return new Object[][]{
                 {"asd"},
-                {"9929"},
-                {"213ddd"},
-                {"   2 "}};
+                {"213ddd"}};
     }
 
     @DataProvider(name = "Incorrect_pet_statuses")

@@ -1,4 +1,4 @@
-package swagger.petstore.pet.post.pet;
+package swagger.petstore.pet.post.swagger.pet;
 
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;

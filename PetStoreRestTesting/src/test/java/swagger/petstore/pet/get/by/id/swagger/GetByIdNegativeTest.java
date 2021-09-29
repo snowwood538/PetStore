@@ -1,4 +1,4 @@
-package swagger.petstore.pet.get.by.id;
+package swagger.petstore.pet.get.by.id.swagger;
 
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import swagger.petstore.api.requests.PetRequests;
 import swagger.petstore.api.requests.Specifications;
-import swagger.petstore.data_providers.pet.PetDataProvider;
+import swagger.petstore.data_providers.PetDataProvider;
 import swagger.petstore.models.PetModel;
 import utils.factory.pet.factory.PetFactory;
 
