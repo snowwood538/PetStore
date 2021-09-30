@@ -9,11 +9,11 @@
         </groups>
         <classes>
             <class name="swagger.petstore.hooks.SuiteHooks"/>
-            <class name="swagger.petstore.pet.get.by.id.mock.GetByIdPositiveTest"/>
-            <class name="swagger.petstore.pet.get.by.id.mock.GetPetByNotExistingIdNegativeTest"/>
-            <class name="swagger.petstore.pet.get.by.id.mock.GetByNotValidIDNegativeTest"/>
-            <class name="swagger.petstore.pet.post.mock.pet.PostNewPetWithAllFieldsPositiveTest"/>
-            <class name="swagger.petstore.pet.post.mock.pet.PostNewPetWithRequiredFieldsPositiveTest"/>
+            <class name="swagger.petstore.pet.wiremock.get.by.id.GetByIdPositiveTest"/>
+            <class name="swagger.petstore.pet.wiremock.get.by.id.GetPetByNotExistingIdNegativeTest"/>
+            <class name="swagger.petstore.pet.wiremock.get.by.id.GetByNotValidIDNegativeTest"/>
+            <class name="swagger.petstore.pet.wiremock.post.pet.PostNewPetWithAllFieldsPositiveTest"/>
+            <class name="swagger.petstore.pet.wiremock.post.pet.PostNewPetWithRequiredFieldsPositiveTest"/>
         </classes>
     </test>
 </suite>

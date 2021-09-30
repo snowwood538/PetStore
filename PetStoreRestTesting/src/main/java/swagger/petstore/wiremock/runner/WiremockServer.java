@@ -3,7 +3,7 @@ package swagger.petstore.wiremock.runner;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.stubbing.StubMapping;
 
-import static swagger.petstore.api.instances.urls.BaseUrls.PORT_MOCK;
+import static swagger.petstore.wiremock.urls.Domain.PORT_MOCK;
 
 public class WiremockServer {
     private static WireMockServer server = new WireMockServer(PORT_MOCK);

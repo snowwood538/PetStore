@@ -3,7 +3,7 @@ package swagger.petstore.api.requests;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import swagger.petstore.models.PetModel;
+import swagger.petstore.models.swagger.PetModel;
 
 public class PetRequests {
 
