@@ -15,8 +15,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
 
+import static com.api.petstore.instances.TestingGroups.WIREMOCK_GROUP;
 import static com.api.petstore.swagger.instances.endpoints.PetEndpoints.PET_STRICT;
 import static com.api.petstore.swagger.instances.urls.BaseUrls.MOCK_URL;
+import static com.gargoylesoftware.htmlunit.HttpHeader.CONTENT_TYPE;
 import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
 
 public class GetByNotValidIDNegativeTest {
@@ -28,23 +30,23 @@ public class GetByNotValidIDNegativeTest {
         this.id = id;
     }
 
-    @BeforeMethod(groups = "Wiremock Test Group")
+    @BeforeMethod(groups = WIREMOCK_GROUP)
     public void beforeGetByIdNegativeTests() {
         mock.withStatus(400);
-        mock.withHeader("Content-Type", "application/json");
+        mock.withHeader(CONTENT_TYPE, "application/json");
         mock.withBodyFile(JsonFilePaths.PATH_TO_RESPONSE_JSON);
-        WireMock.stubFor(WireMock.get("/pet/" + id).willReturn(mock));
+        WireMock.stubFor(WireMock.get(PET_STRICT + id).willReturn(mock));
     }
 
-    @Test(groups = "Wiremock Test Group")
+    @Test(groups = WIREMOCK_GROUP)
     public void getPetByIncorrectIdNegative() {
         RequestSpecification spec = Specifications.requestSpecification(MOCK_URL, PET_STRICT + id);
         Response response = PetRequests.get(spec);
         Assert.assertEquals(response.getStatusCode(), SC_BAD_REQUEST, "Incompatible type of id works out");
     }
 
-    @AfterMethod(groups = "Wiremock Test Group")
+    @AfterMethod(groups = WIREMOCK_GROUP)
     public void afterGetPetByIncorrectIdNegative() {
-        WiremockServer.cleanMock(WireMock.stubFor(WireMock.get("/pet/" + id).willReturn(mock)));
+        WiremockServer.cleanMock(WireMock.stubFor(WireMock.get(PET_STRICT + id).willReturn(mock)));
     }
 }

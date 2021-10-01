@@ -21,8 +21,10 @@ import utils.common.validator.JsonValidator;
 import utils.wiremock.handler.JsonReader;
 import utils.wiremock.handler.JsonWriter;
 
+import static com.api.petstore.instances.TestingGroups.WIREMOCK_GROUP;
 import static com.api.petstore.swagger.instances.endpoints.PetEndpoints.PET;
 import static com.api.petstore.swagger.instances.urls.BaseUrls.MOCK_URL;
+import static com.gargoylesoftware.htmlunit.HttpHeader.CONTENT_TYPE;
 import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
 import static utils.common.factory.enums.PetTypeVar.FULFILLED_PET;
 import static utils.common.factory.enums.ResponseTypes.INVALID_ID;
@@ -35,17 +37,17 @@ public class PutNewPetInfoWithNullAttributesNegativeTest {
     ResponseDefinitionBuilder mock = new ResponseDefinitionBuilder();
 
     @SneakyThrows
-    @BeforeMethod(groups = "Wiremock Test Group")
+    @BeforeMethod(groups = WIREMOCK_GROUP)
     public void beforePutNewPetInfoWithNullAttributesNegativeTest() {
         JsonWriter.writeJsonResponse(response, RESPONSE_JSON);
         mock.withStatus(400);
-        mock.withHeader("Content-Type", "application/json");
+        mock.withHeader(CONTENT_TYPE, "application/json");
         mock.withBodyFile(JsonFilePaths.PATH_TO_RESPONSE_JSON);
-        WireMock.stubFor(WireMock.put("/pet").willReturn(mock));
+        WireMock.stubFor(WireMock.put(PET).willReturn(mock));
     }
 
     @SneakyThrows
-    @Test(groups = "Wiremock Test Group")
+    @Test(groups = WIREMOCK_GROUP)
     public static void putNewPetInfoWithNullAttributesNegativeTest() {
         PetModel petFromJson = JsonReader.readJsonFile(EXAMPLE_FOR_PUT_JSON);
         petFromJson.setName(null);
@@ -58,8 +60,8 @@ public class PutNewPetInfoWithNullAttributesNegativeTest {
         JsonValidator.validateResponse(response);
     }
 
-    @AfterMethod(groups = "Wiremock Test Group")
+    @AfterMethod(groups = WIREMOCK_GROUP)
     public void afterPutNewPetInfoWithNullAttributesNegativeTest() {
-        WiremockServer.cleanMock(WireMock.stubFor(WireMock.put("/pet").willReturn(mock)));
+        WiremockServer.cleanMock(WireMock.stubFor(WireMock.put(PET).willReturn(mock)));
     }
 }

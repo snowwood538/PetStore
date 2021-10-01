@@ -18,8 +18,10 @@ import utils.common.factory.response.ResponseFactory;
 import utils.common.validator.JsonValidator;
 import utils.wiremock.handler.JsonWriter;
 
+import static com.api.petstore.instances.TestingGroups.WIREMOCK_GROUP;
 import static com.api.petstore.swagger.instances.endpoints.PetEndpoints.PET_STRICT;
 import static com.api.petstore.swagger.instances.urls.BaseUrls.MOCK_URL;
+import static com.gargoylesoftware.htmlunit.HttpHeader.CONTENT_TYPE;
 import static org.apache.http.HttpStatus.SC_METHOD_NOT_ALLOWED;
 import static utils.common.factory.enums.ResponseTypes.NOT_ALLOWED;
 import static utils.wiremock.instances.JsonInstances.RESPONSE_JSON;
@@ -29,17 +31,17 @@ public class DeleteRequestWithEmptyQueryTest {
     ResponseDefinitionBuilder mock = new ResponseDefinitionBuilder();
 
     @SneakyThrows
-    @BeforeMethod(groups = "Wiremock Test Group")
+    @BeforeMethod(groups = WIREMOCK_GROUP)
     public void beforeDeleteNegativeTests() {
         JsonWriter.writeJsonResponse(response, RESPONSE_JSON);
 
         mock.withStatus(405);
-        mock.withHeader("Content-Type", "application/json");
+        mock.withHeader(CONTENT_TYPE, "application/json");
         mock.withBodyFile(JsonFilePaths.PATH_TO_RESPONSE_JSON);
-        WireMock.stubFor(WireMock.delete("/pet/").willReturn(mock));
+        WireMock.stubFor(WireMock.delete(PET_STRICT).willReturn(mock));
     }
 
-    @Test(groups = "Wiremock Test Group")
+    @Test(groups = WIREMOCK_GROUP)
     public static void sendDeleteRequestWithEmptyQueryTest() {
         RequestSpecification spec = Specifications.requestSpecification(MOCK_URL, PET_STRICT);
         Response response = PetRequests.delete(spec);
@@ -47,8 +49,8 @@ public class DeleteRequestWithEmptyQueryTest {
         JsonValidator.validateResponse(response);
     }
 
-    @AfterMethod(groups = "Wiremock Test Group")
+    @AfterMethod(groups = WIREMOCK_GROUP)
     public void afterDeletePetByIdPositiveTest() {
-        WiremockServer.cleanMock(WireMock.stubFor(WireMock.delete("/pet/").willReturn(mock)));
+        WiremockServer.cleanMock(WireMock.stubFor(WireMock.delete(PET_STRICT).willReturn(mock)));
     }
 }

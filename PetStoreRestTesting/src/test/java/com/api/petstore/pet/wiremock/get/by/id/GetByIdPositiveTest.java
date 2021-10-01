@@ -17,7 +17,10 @@ import org.testng.annotations.Test;
 import utils.common.factory.pet.PetFactory;
 import utils.common.validator.JsonValidator;
 
+import static com.api.petstore.instances.TestingGroups.WIREMOCK_GROUP;
+import static com.api.petstore.swagger.instances.endpoints.PetEndpoints.PET_STRICT;
 import static com.api.petstore.swagger.instances.urls.BaseUrls.MOCK_URL;
+import static com.gargoylesoftware.htmlunit.HttpHeader.CONTENT_TYPE;
 import static org.apache.http.HttpStatus.SC_OK;
 import static utils.common.factory.enums.PetTypeVar.FULFILLED_PET;
 
@@ -25,15 +28,15 @@ public class GetByIdPositiveTest {
     public static final PetModel pet = PetFactory.createNewPet(FULFILLED_PET);
     ResponseDefinitionBuilder mock = new ResponseDefinitionBuilder();
 
-    @BeforeTest(groups = "Wiremock Test Group")
+    @BeforeTest(groups = WIREMOCK_GROUP)
     public void beforeGetByIdPositiveTests() {
         mock.withStatus(200);
-        mock.withHeader("Content-Type", "application/json");
+        mock.withHeader(CONTENT_TYPE, "application/json");
         mock.withBodyFile(JsonFilePaths.PATH_TO_FULFILLED_PET_JSON);
-        WireMock.stubFor(WireMock.get("/pet/" + pet.getId()).willReturn(mock));
+        WireMock.stubFor(WireMock.get(PET_STRICT + pet.getId()).willReturn(mock));
     }
 
-    @Test(groups = "Wiremock Test Group")
+    @Test(groups = WIREMOCK_GROUP)
     public static void getPetByIdPositive() {
         RequestSpecification spec = Specifications.requestSpecification(MOCK_URL, PetEndpoints.PET_STRICT + pet.getId());
         Response response = PetRequests.get(spec);
@@ -41,8 +44,8 @@ public class GetByIdPositiveTest {
         JsonValidator.validateObject(response);
     }
 
-    @AfterMethod(groups = "Wiremock Test Group")
+    @AfterMethod(groups = WIREMOCK_GROUP)
     public void afterGetPetByIdPositive() {
-        WiremockServer.cleanMock(WireMock.stubFor(WireMock.get("/pet/" + pet.getId()).willReturn(mock)));
+        WiremockServer.cleanMock(WireMock.stubFor(WireMock.get(PET_STRICT + pet.getId()).willReturn(mock)));
     }
 }

@@ -19,7 +19,10 @@ import utils.common.factory.pet.PetFactory;
 import utils.common.validator.JsonValidator;
 import utils.wiremock.handler.JsonWriter;
 
+import static com.api.petstore.instances.TestingGroups.WIREMOCK_GROUP;
+import static com.api.petstore.swagger.instances.endpoints.PetEndpoints.PET;
 import static com.api.petstore.swagger.instances.urls.BaseUrls.MOCK_URL;
+import static com.gargoylesoftware.htmlunit.HttpHeader.CONTENT_TYPE;
 import static org.apache.http.HttpStatus.SC_OK;
 import static utils.common.factory.enums.PetTypeVar.FULFILLED_PET;
 import static utils.wiremock.instances.JsonInstances.POST_FULFILLED_PET_JSON;
@@ -29,17 +32,17 @@ public class PostNewPetWithAllFieldsPositiveTest {
     private static final  ResponseDefinitionBuilder mock = new ResponseDefinitionBuilder();
 
     @SneakyThrows
-    @BeforeMethod(groups = "Wiremock Test Group")
+    @BeforeMethod(groups = WIREMOCK_GROUP)
     public void beforePostNewPetWithAllFieldsPositive() {
         JsonWriter.writeJsonFile(pet, POST_FULFILLED_PET_JSON);
 
         mock.withStatus(200);
-        mock.withHeader("Content-Type", "application/json");
+        mock.withHeader(CONTENT_TYPE, "application/json");
         mock.withBodyFile(JsonFilePaths.PATH_TO_FULFILLED_PET_JSON);
-        WireMock.stubFor(WireMock.post("/pet").willReturn(mock));
+        WireMock.stubFor(WireMock.post(PET).willReturn(mock));
     }
 
-    @Test(groups = "Wiremock Test Group")
+    @Test(groups = WIREMOCK_GROUP)
     public static void postNewPetWithAllFieldsPositive() {
         RequestSpecification spec = Specifications.requestSpecification(MOCK_URL, PetEndpoints.PET);
         Response response = PetRequests.post(spec, pet);
@@ -48,8 +51,8 @@ public class PostNewPetWithAllFieldsPositiveTest {
         JsonValidator.validateObject(response);
     }
 
-    @AfterMethod(groups = "Wiremock Test Group")
+    @AfterMethod(groups = WIREMOCK_GROUP)
     public void afterPostNewPetWithAllFieldsPositive() {
-        WiremockServer.cleanMock(WireMock.stubFor(WireMock.post("/pet").willReturn(mock)));
+        WiremockServer.cleanMock(WireMock.stubFor(WireMock.post(PET).willReturn(mock)));
     }
 }

@@ -1,7 +1,5 @@
 package com.api.petstore.swagger.instances.urls;
 
-
-
 public class BaseUrls {
     public static final String BASE_URL = "http://petstore.swagger.io/v2";
     public static final int PORT_MOCK = 8080;
